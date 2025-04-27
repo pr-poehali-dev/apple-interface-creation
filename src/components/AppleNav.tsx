@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { Search, Apple, ShoppingBag } from "lucide-react";
+import { Apple, ShoppingBag } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const AppleNav = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -31,24 +32,23 @@ const AppleNav = () => {
               <Apple className="h-5 w-5" />
             </Link>
             
-            <div className="hidden md:block">
-              <div className="flex space-x-8 items-center">
-                {["Магазин", "Mac", "iPad", "iPhone", "Watch", "Vision", "AirPods", "Поддержка"].map((item, index) => (
-                  <Link
-                    key={index}
-                    to="/"
-                    className="text-xs font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-                  >
-                    {item}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            
             <div className="flex items-center space-x-4">
-              <button className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
-                <Search className="h-4 w-4" />
-              </button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="text-xs font-medium bg-blue-500 hover:bg-blue-600 text-white px-4 py-1.5 rounded-full transition-colors duration-200">
+                    Tumblr
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[90vw] sm:max-h-[90vh] h-[90vh]">
+                  <iframe 
+                    src="https://www.tumblr.com/obeseteen-boy" 
+                    className="w-full h-full border-0" 
+                    title="Tumblr"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  />
+                </DialogContent>
+              </Dialog>
+              
               <button className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
                 <ShoppingBag className="h-4 w-4" />
               </button>
